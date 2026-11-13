@@ -45,7 +45,7 @@ function requireText(value, field, res) {
   return true;
 }
 
-app.get("/health", (_req, res) => res.json({ status: "ok", service: "accessflow", timestamp: new Date().toISOString() }));
+app.get(["/health", "/api/health"], (_req, res) => res.json({ status: "ok", service: "accessflow", timestamp: new Date().toISOString() }));
 
 app.get("/api/identities", (req, res) => {
   const term = String(req.query.q || "").trim().toLowerCase();
@@ -108,4 +108,8 @@ app.get("/api/audit-events", (_req, res) => res.json({ data: auditEvents, total:
 app.use(express.static(frontendPath, { extensions: ["html"] }));
 app.get("*", (_req, res) => res.sendFile(path.join(frontendPath, "index.html")));
 
-app.listen(port, "0.0.0.0", () => console.log(`AccessFlow listening on port ${port}`));
+if (require.main === module) {
+  app.listen(port, "0.0.0.0", () => console.log(`AccessFlow listening on port ${port}`));
+}
+
+module.exports = app;

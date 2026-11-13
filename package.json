@@ -5,6 +5,7 @@
   "description": "Identity governance and access operations workspace",
   "scripts": {
     "check": "node --check frontend/app.js && node --check backend/server.js",
+    "build": "node scripts/prepare-vercel.js",
     "start": "node backend/server.js"
   },
   "dependencies": {
