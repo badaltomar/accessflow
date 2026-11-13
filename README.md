@@ -74,7 +74,7 @@ screenshots/    Product screenshots for repository documentation
 
 ## Deployment
 
-Set `PORT` in the hosting environment and deploy as a Node web service. The application listens on `0.0.0.0` and serves the browser workspace and API from one process. The included [render.yaml](./render.yaml) supports Render, while [vercel.json](./vercel.json) packages the browser workspace as Vercel static assets and exposes the Express API as Vercel functions. See [.env.example](./.env.example) for configuration and [backend/API-Contract.md](./backend/API-Contract.md) for integration requirements.
+Deploy through Vercel using the included [vercel.json](./vercel.json). It packages the browser workspace as static assets and exposes the Express API as Vercel functions. See [.env.example](./.env.example) for configuration and [backend/API-Contract.md](./backend/API-Contract.md) for integration requirements.
 
 ## Security considerations
 
