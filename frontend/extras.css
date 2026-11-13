@@ -1,0 +1,1 @@
+.muted{color:#979caf;font-size:10px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px;background:#fafbfe;border:1px solid #eef0f5;padding:16px;border-radius:8px}.detail-grid small{display:block;font-size:9px;letter-spacing:.7px;color:#9298ab;margin-bottom:4px}.detail-grid b{font-size:12px;color:#3c435e}.detail-full{grid-column:span 2}

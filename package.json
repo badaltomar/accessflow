@@ -1,0 +1,16 @@
+{
+  "name": "accessflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Identity governance and access operations workspace",
+  "scripts": {
+    "check": "node --check frontend/app.js && node --check backend/server.js",
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

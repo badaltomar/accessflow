@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AccessFlow | Identity Governance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="extras.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">A</span><span>Access<span>Flow</span></span></div>
+      <p class="environment"><i></i> IDENTITY GOVERNANCE</p>
+      <nav aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard"><span>▦</span>Overview</button>
+        <button class="nav-item" data-view="requests"><span>↗</span>Access requests <b id="request-badge">4</b></button>
+        <button class="nav-item" data-view="employees"><span>♙</span>Identities</button>
+        <button class="nav-item" data-view="provisioning"><span>⇄</span>Provisioning</button>
+        <button class="nav-item" data-view="reviews"><span>✓</span>Access reviews</button>
+        <button class="nav-item" data-view="audit"><span>◫</span>Audit trail</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="operator-avatar">AM</div>
+        <div><strong>Alex Morgan</strong><small>IAM Analyst</small></div>
+        <span class="dots">•••</span>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div class="crumb">Operations <span>/</span> <b id="page-title">Overview</b></div>
+        <div class="header-actions"><button class="icon-button" title="Notifications">♧<em></em></button><button class="help">?</button></div>
+      </header>
+
+      <section id="dashboard" class="view active">
+        <div class="page-heading"><div><p class="eyebrow">FRIDAY, NOVEMBER 13</p><h1>Good morning, Alex.</h1><p class="subcopy">Here’s the current state of identity operations.</p></div><button class="primary" data-action="new-request">+ New access request</button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon violet">♙</div><p>Active identities</p><h2 id="identity-count">1,248</h2><small class="positive">↑ 12 <span>this month</span></small></article>
+          <article class="stat-card"><div class="stat-icon amber">◷</div><p>Pending approvals</p><h2 id="pending-count">4</h2><small class="warning">Needs attention <span>today</span></small></article>
+          <article class="stat-card"><div class="stat-icon cyan">✓</div><p>Provisioned this week</p><h2>38</h2><small class="positive">94.7% <span>within SLA</span></small></article>
+          <article class="stat-card"><div class="stat-icon coral">!</div><p>Failed provisioning</p><h2 id="failure-count">2</h2><small class="danger">2 require <span>intervention</span></small></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel activity-panel"><div class="panel-head"><div><h3>Priority queue</h3><p>Requests requiring action</p></div><button class="text-button" data-goto="requests">View all →</button></div><div id="priority-list" class="priority-list"></div></article>
+          <article class="panel risk-panel"><div class="panel-head"><div><h3>Control health</h3><p>Current governance indicators</p></div><span class="status healthy">● Healthy</span></div><div class="health-row"><span>Access review completion</span><b>87%</b></div><div class="progress"><i style="width:87%"></i></div><div class="health-row"><span>SLA compliance</span><b>94.7%</b></div><div class="progress cyan-progress"><i style="width:94.7%"></i></div><div class="health-row"><span>SoD violations open</span><b class="alert-value">1</b></div><div class="sod-alert"><span>!</span><p><b>Finance conflict detected</b><br>Payment Approver + Vendor Master Editor</p><button data-goto="reviews">Review</button></div></article>
+        </div>
+        <article class="panel recent-panel"><div class="panel-head"><div><h3>Recent activity</h3><p>A traceable record of access changes</p></div><button class="text-button" data-goto="audit">Open audit trail →</button></div><div id="recent-activity"></div></article>
+      </section>
+
+      <section id="requests" class="view">
+        <div class="page-heading"><div><p class="eyebrow">ACCESS LIFECYCLE</p><h1>Access requests</h1><p class="subcopy">Review, approve and track access changes from one queue.</p></div><button class="primary" data-action="new-request">+ New access request</button></div>
+        <div class="filter-row"><div class="search">⌕ <input id="request-search" placeholder="Search by request, employee or application" /></div><button class="filter active-filter">All <span id="all-count">6</span></button><button class="filter">Pending</button><button class="filter">In progress</button><button class="filter">Completed</button></div>
+        <article class="panel table-panel"><table><thead><tr><th>REQUEST</th><th>IDENTITY</th><th>APPLICATION / ROLE</th><th>TYPE</th><th>STATUS</th><th>AGE</th><th></th></tr></thead><tbody id="requests-table"></tbody></table></article>
+      </section>
+
+      <section id="employees" class="view">
+        <div class="page-heading"><div><p class="eyebrow">IDENTITY DIRECTORY</p><h1>Employee identities</h1><p class="subcopy">Manage the identity record and application access of your workforce.</p></div><button class="primary" data-action="new-employee">+ Add employee</button></div>
+        <div class="jml-strip"><div><span class="jml-icon">1</span><b>Joiner</b><small>Create identity & baseline access</small></div><span>→</span><div><span class="jml-icon mover">2</span><b>Mover</b><small>Reconcile role and department access</small></div><span>→</span><div><span class="jml-icon leaver">3</span><b>Leaver</b><small>Revoke access & disable identity</small></div></div>
+        <article class="panel table-panel"><div class="directory-head"><div class="search">⌕ <input id="employee-search" placeholder="Find an employee" /></div><button class="filter">Department ▾</button><button class="filter">Status ▾</button></div><table><thead><tr><th>EMPLOYEE</th><th>DEPARTMENT</th><th>DESIGNATION</th><th>MANAGER</th><th>APPLICATIONS</th><th>STATUS</th><th></th></tr></thead><tbody id="employees-table"></tbody></table></article>
+      </section>
+
+      <section id="provisioning" class="view">
+        <div class="page-heading"><div><p class="eyebrow">FULFILMENT OPERATIONS</p><h1>Provisioning center</h1><p class="subcopy">Monitor automated fulfilment jobs and resolve exceptions.</p></div><button class="primary" data-action="run-job">↻ Run provisioning job</button></div>
+        <div class="stats-grid compact"><article class="stat-card"><p>Queued</p><h2>3</h2><small>Awaiting connector</small></article><article class="stat-card"><p>Processing</p><h2>1</h2><small class="positive">Connector online</small></article><article class="stat-card"><p>Completed today</p><h2>21</h2><small class="positive">100% verified</small></article><article class="stat-card"><p>Exceptions</p><h2 id="exception-count">2</h2><small class="danger">Needs operator action</small></article></div>
+        <article class="panel table-panel"><div class="panel-head"><div><h3>Job activity</h3><p>Latest connector events</p></div><span class="connector">● Simulated directory connector</span></div><table><thead><tr><th>JOB ID</th><th>IDENTITY</th><th>OPERATION</th><th>TARGET</th><th>RESULT</th><th>TIME</th><th></th></tr></thead><tbody id="provisioning-table"></tbody></table></article>
+      </section>
+
+      <section id="reviews" class="view"><div class="page-heading"><div><p class="eyebrow">GOVERNANCE CONTROLS</p><h1>Access reviews</h1><p class="subcopy">Certify access and remediate conflicts before the review closes.</p></div><button class="primary" data-action="start-review">+ Start review</button></div><div class="review-grid"><article class="panel review-card"><span class="review-label">Q4 2026 CAMPAIGN</span><h3>Finance application certification</h3><p>Owners must confirm that each user retains a valid business need.</p><div class="review-progress"><b>87% complete</b><span>174 of 200 decisions</span></div><div class="progress"><i style="width:87%"></i></div><button class="secondary">Continue review →</button></article><article class="panel sod-card"><div class="panel-head"><div><h3>Segregation of duties</h3><p>Conflicting access combinations</p></div><span class="status review">● 1 open</span></div><div class="conflict"><div class="avatar red">PS</div><div><b>Priya Shah</b><p>Finance Operations · <span>High risk</span></p><small>Payment Approver ↔ Vendor Master Editor</small></div><button class="secondary">Remediate</button></div></article></div></section>
+
+      <section id="audit" class="view"><div class="page-heading"><div><p class="eyebrow">IMMUTABLE RECORD</p><h1>Audit trail</h1><p class="subcopy">Every identity and access event is captured for investigation and compliance.</p></div><button class="secondary">⇩ Export CSV</button></div><div class="filter-row"><div class="search">⌕ <input id="audit-search" placeholder="Search actor, identity, action" /></div><button class="filter">Last 7 days ▾</button><button class="filter">All event types ▾</button></div><article class="panel audit-log" id="audit-log"></article></section>
+    </main>
+
+    <div id="modal" class="modal-backdrop" aria-hidden="true"><div class="modal"><button class="close" data-action="close-modal">×</button><div id="modal-content"></div></div></div>
+    <div id="toast" class="toast"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
